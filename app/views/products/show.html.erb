@@ -3,7 +3,7 @@
       <div class="col-sm-8 col-sm-offset-2">
         <div class="product_single">
             <h2><%= @product.name %></h2>
-            <p>Price: <%= number_to_currency(@product.price) %></p>
+            <p class="<%= @product.discount_class_name %>">Price: <%= number_to_currency(@product.price) %></p>
             <p>Tax: <%= number_to_currency(@product.tax) %></p>
             <p>Total: <%= number_to_currency(@product.total) %></p>
             <p><%= @product.sale_message %></p>
