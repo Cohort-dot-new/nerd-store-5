@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier # hey Rails, please write me a method called supplier
+
   def tax
     price.to_f * 0.09
   end
