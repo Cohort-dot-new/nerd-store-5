@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :supplier # hey Rails, please write me a method called supplier
+  has_many :images # hey Rails, please write me a method called images
 
   def tax
     price.to_f * 0.09
