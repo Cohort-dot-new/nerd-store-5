@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   has_many :images # hey Rails, please write me a method called images
   has_many :orders
   has_many :category_products
+  has_many :categories, through: :category_products
 
   def tax
     price.to_f * 0.09
