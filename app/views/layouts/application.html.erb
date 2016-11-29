@@ -38,7 +38,9 @@
             <li><a href="/products?discount=true">Discount items</a></li>
             <li><a href="/products/random">Random item</a></li>
             <li class="divider"></li>
-            <li><a href="/products?category_name=Weapons">Weapons only</a></li>
+            <% Category.all.each do |category| %>
+              <li><a href="/products?category_name=<%= category.name %>"><%= category.name %> only</a></li>
+            <% end %>
             <li class="divider"></li>
             <%= form_tag "/search", method: :post do %>
               <%= label_tag :search %>
