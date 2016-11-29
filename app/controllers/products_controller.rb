@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
     only_show_discount = params[:discount] == "true"
     if only_show_discount
       @products = Product.where("price < ?", 10)
+    elsif params[:category_name] != nil
+      selected_category = Category.find_by(name: params[:category_name])
+      @products = selected_category.products
     else
       sort_attribute = params[:sort] || "name"
       sort_order = params[:sort_order] || "asc"

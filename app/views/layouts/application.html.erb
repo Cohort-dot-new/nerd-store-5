@@ -38,12 +38,15 @@
             <li><a href="/products?discount=true">Discount items</a></li>
             <li><a href="/products/random">Random item</a></li>
             <li class="divider"></li>
+            <li><a href="/products?category_name=Weapons">Weapons only</a></li>
+            <li class="divider"></li>
             <%= form_tag "/search", method: :post do %>
               <%= label_tag :search %>
               <%= text_field_tag :search %>
               <%= submit_tag "Search" %>
             <% end %>
             <li><a href="#">Separated link</a></li>
+            <a href="/products?category_name=Weapons">Weapons only</a>
           </ul>
         </li>
       </ul>
