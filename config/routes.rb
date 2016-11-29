@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   delete '/products/:id' => 'products#delete'
   post '/search' => 'products#search'
 
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
+
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/login' => 'sessions#new'
