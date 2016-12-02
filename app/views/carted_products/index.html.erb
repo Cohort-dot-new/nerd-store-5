@@ -3,3 +3,6 @@
   <h2>Name: <%= carted_product.product.name %></h2>
   <h4>Quantity: <%= carted_product.quantity %></h4>
 <% end %>
+<%= form_tag "/orders", method: :post do %>
+  <%= submit_tag "Buy now!" %>
+<% end %>
