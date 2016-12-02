@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search]
+
   def index
     only_show_discount = params[:discount] == "true"
     if only_show_discount
@@ -15,11 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if current_user && current_user.admin
-      render 'new.html.erb'
-    else
-      redirect_to "/"
-    end
+    render 'new.html.erb'
   end
 
   def create
