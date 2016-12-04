@@ -24,10 +24,15 @@ class ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       description: params[:description],
-      image: params[:image],
-      price: params[:price]
+      price: params[:price],
+      supplier_id: 1
     )
     @product.save
+    image = Image.new(
+      url: params[:image],
+      product_id: @product.id
+    )
+    image.save
     flash[:success] = "Product Created"
     redirect_to "/products/#{@product.id}"
   end
@@ -51,7 +56,6 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name]
     @product.description = params[:description]
-    @product.image = params[:image]
     @product.price = params[:price]
     @product.save
     flash[:success] = "Product Updated"
