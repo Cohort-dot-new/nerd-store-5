@@ -27,14 +27,17 @@ class ProductsController < ApplicationController
       price: params[:price],
       supplier_id: 1
     )
-    @product.save
-    image = Image.new(
-      url: params[:image],
-      product_id: @product.id
-    )
-    image.save
-    flash[:success] = "Product Created"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      image = Image.new(
+        url: params[:image],
+        product_id: @product.id
+      )
+      image.save
+      flash[:success] = "Product Created"
+      redirect_to "/products/#{@product.id}"
+    else
+      render 'new.html.erb'
+    end
   end
 
   def show
